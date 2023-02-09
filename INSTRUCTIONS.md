@@ -15,8 +15,8 @@ For this weekend challenge you'll be expanding on a movie management application
 
 ## Database Setup
 
-1. Create a database named `saga_movies_weekend`
-2. Run the queries from `database.sql` on the `saga_movies_weekend` database
+1. [X] Create a database named `saga_movies_weekend`
+2. [X] Run the queries from `database.sql` on the `saga_movies_weekend` database
 
 ## Install Dependencies
 
