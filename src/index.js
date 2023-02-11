@@ -14,6 +14,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('FETCH_GENRES', fetchAllGenres); // added a fetch for the genres. will add fetchAllGenres function.
 }
 
 function* fetchAllMovies() {
@@ -27,7 +28,24 @@ function* fetchAllMovies() {
         console.log('get all error');
     }
         
-}
+}; // end of fetchAllMovies function
+
+function* fetchAllGenres() {
+    // get all genres from the DB
+    try {
+        const genres = yield axios.get('/api/genre');
+        console.log('get all:', genres.data);
+        yield put({ type: 'SET_GENRES', payload: genres.data });
+
+    } catch {
+        console.log('get all error');
+    }
+        
+}; // end of fetchAllGenres function
+// the reason this function isn't returning a console log on the home page is because there is no useEffect for the FETCH_GENRES at this point.
+// will be able to use this SET_GENRES put if I decide to add a genres page where users can access movies by clicking on specific genres.
+// could technically even access this through the individual movie pages if I make the genre fields clickable.
+// the previous line isn't part of the base project requirements, but makes sense functionally for users.
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -40,7 +58,7 @@ const movies = (state = [], action) => {
         default:
             return state;
     }
-}
+};
 
 // Used to store the movie genres
 const genres = (state = [], action) => {
@@ -50,7 +68,7 @@ const genres = (state = [], action) => {
         default:
             return state;
     }
-}
+};
 
 // Create one store that all components can use
 const storeInstance = createStore(
