@@ -47,6 +47,9 @@ function* fetchAllGenres() {
 // could technically even access this through the individual movie pages if I make the genre fields clickable.
 // the previous line isn't part of the base project requirements, but makes sense functionally for users.
 
+// todo: consider creating a reducer for the movies_genres in order to store this information returned from the server
+// This means I will also need to create a a movies_genres router in order to access the information within the database.
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
