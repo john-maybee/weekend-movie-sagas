@@ -9,11 +9,13 @@ const Details = () => {
     return (
         <div>
             <main>
+                <h1>Movie Details</h1>
                 <section className="genres">
+                    <h3>Genres</h3>
                     {genres.map(genre => {
                         return (
                             <div className="movieGenres" >
-                                <h3>{genre.genres}</h3>
+                                <li>{genre.genres}</li>
                             </div>
                         );
                     })}
