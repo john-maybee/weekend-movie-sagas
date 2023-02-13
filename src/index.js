@@ -14,7 +14,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('FETCH_GENRES', fetchAllGenres); // added a fetch for the genres. will add fetchAllGenres function.
+    yield takeEvery('FETCH_GENRES', fetchGenres); // added a fetch for the genres. will add fetchAllGenres function.
 }
 
 function* fetchAllMovies() {
@@ -30,18 +30,19 @@ function* fetchAllMovies() {
         
 }; // end of fetchAllMovies function
 
-function* fetchAllGenres() {
+function* fetchGenres(action) {
     // get all genres from the DB
+    console.log(' id payload of fetchGenres action ', action.payload);
+    const id = action.payload;
     try {
-        const genres = yield axios.get('/api/genre');
-        console.log('get all:', genres.data);
+        const genres = yield axios.get(`/api/genre/${id}`);
+        // console.log('get all:', genres.data); Had it this way when I was originally creating this function with the intention on displaying all genres
         yield put({ type: 'SET_GENRES', payload: genres.data });
 
     } catch {
-        console.log('get all error');
-    }
-        
-}; // end of fetchAllGenres function
+        console.log('fetchGenres error');
+    }        
+}; // end of fetchGenres function, which was previously called fetchAllGenres
 // the reason this function isn't returning a console log on the home page is because there is no useEffect for the FETCH_GENRES at this point.
 // will be able to use this SET_GENRES put if I decide to add a genres page where users can access movies by clicking on specific genres.
 // could technically even access this through the individual movie pages if I make the genre fields clickable.
