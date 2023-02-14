@@ -26,6 +26,8 @@ router.get('/:id', (req,res) => {
   const query = `SELECT "movies"."title", "genres"."name" AS "genres" FROM "movies"
     JOIN "movies_genres" ON "movies_genres"."movie_id" = "movies"."id"
     JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id" WHERE "movies"."id" = $1;`;
+    // add a limit so it doesn't break
+    
   pool.query(query, [req.params.id])
     .then(result => {
       console.log(result);

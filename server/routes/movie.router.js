@@ -4,7 +4,7 @@ const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
 
-  const query = `SELECT * FROM movies ORDER BY "title" ASC`;
+  const query = `SELECT * FROM "movies" ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
       res.send(result.rows);
@@ -51,6 +51,24 @@ router.post('/', (req, res) => {
     console.log(err);
     res.sendStatus(500)
   })
-})
+});
+
+router.get('/:id', (req, res) => {
+  console.log('get movie id: ', req.params.id);
+  const id = req.params.id;
+  const query = `SELECT * FROM "movies" WHERE "id" = $1`;
+  pool.query(query, [req.params.id])
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get selected movie data', err);
+      res.sendStatus(500)
+    })
+});
+
+// need a router.get for the /:id in order to query a SELECT of the specific movie where the id  value = $1
+// in order for us to fetch the selected movie details/other params
+
 
 module.exports = router;

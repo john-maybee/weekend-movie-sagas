@@ -11,7 +11,7 @@ const Details = () => {
             <main>
                 <h1>Movie Details</h1>
                 <section className="genres">
-                    <h3>Genres</h3>
+                    <h3>Genres for: </h3>
                     {genres.map(genre => {
                         return (
                             <div className="movieGenres" >
