@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres); // added a fetch for the genres. will add fetchAllGenres function.
+    yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails); // added a fetch for the details of the selected movie.
 }
 
 function* fetchAllMovies() {
@@ -48,6 +49,17 @@ function* fetchGenres(action) {
 // could technically even access this through the individual movie pages if I make the genre fields clickable.
 // the previous line isn't part of the base project requirements, but makes sense functionally for users.
 
+function* fetchMovieDetails(action) {
+    console.log('id of movie in payload: ', action.payload);
+    const id = action.payload;
+    try {
+        const clickedMovie = yield axios.get(`/api/movie/${id}`);
+        yield put({type: 'SET_MOVIE_DETAILS', payload: clickedMovie.data});
+    } catch {
+        console.log('error getting selected movie details');
+    }
+}
+
 // todo: consider creating a reducer for the movies_genres in order to store this information returned from the server
 // This means I will also need to create a a movies_genres router in order to access the information within the database.
 
@@ -74,11 +86,22 @@ const genres = (state = [], action) => {
     }
 };
 
+const clickedMovie = (state = [], action) => {
+    // need to create the function* for this so that we create yield put type to get the movie information
+    switch (action.type) {
+        case 'SET_MOVIE_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        clickedMovie,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
