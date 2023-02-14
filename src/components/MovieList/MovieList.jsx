@@ -20,6 +20,10 @@ function MovieList() {
                 type: 'FETCH_GENRES',
                 payload: movie.id
             }),
+            dispatch({
+                type: 'FETCH_MOVIE_DETAILS',
+                payload: movie.id
+            }),
             history.push('/details')
         )
     }
