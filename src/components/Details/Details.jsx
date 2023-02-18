@@ -23,14 +23,15 @@ const Details = () => {
                 })}
                 </section>
                 <section className="genres">
-                    {genres.map(genre => {
-                        return (
-                            <div key={genre.id}>
-                                <h3>Genres associated: </h3>
-                                <li>{genre.genres}</li>
-                            </div>
-                        );
-                    })}
+                    <h3>Genres associated: </h3>
+                        {genres.map(genre => {
+                            return (
+                                <div key={genre.id}>
+                                    
+                                    <li>{genre.genres}</li>
+                                </div>
+                            );
+                        })}
                 </section>
                 <button className="home" onClick={() => {history.push('/')}}>Home</button>
             </main>
