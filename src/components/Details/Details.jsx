@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './Details.css';
 
 const Details = () => {
     const genres = useSelector(store => store.genres);
@@ -9,7 +10,7 @@ const Details = () => {
 
     return (
         <div>
-            <main>
+            <main className="allMovieDetails">
                 <section classname="movieInformation">
                 {clickedMovie.map(movie => {
                     return(

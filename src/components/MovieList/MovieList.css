@@ -1,4 +1,16 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.thisMovie{
+    flex: 24%;
+    border: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.mainPageMovie{
+    width: 162px;
+    height: 240px;
 }
