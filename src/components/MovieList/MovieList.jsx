@@ -43,6 +43,8 @@ function MovieList() {
         </main>
 
     );
-}
+}; // end of MovieList function. This displays/maps all of the movies in the database 
+// this function also holds the handler for the click event that takes place when a poster is clicked. 
+// this then routes you to the Details page utilizing the useHistory method.
 
 export default MovieList;
