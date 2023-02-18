@@ -4,17 +4,29 @@ import { useHistory } from 'react-router-dom';
 
 const Details = () => {
     const genres = useSelector(store => store.genres);
+    const clickedMovie = useSelector(store => store.clickedMovie);
     const history = useHistory();
 
     return (
         <div>
             <main>
-                <h1>Movie Details</h1>
+                <section classname="movieInformation">
+                {clickedMovie.map(movie => {
+                    return(
+                    <div key={movie.id}>
+                        <h1>{movie.title}</h1>
+                        <img src={movie.poster} alt={movie.title} />
+                        <h3>Description:</h3>
+                        <p>{movie.description}</p>
+                    </div>
+                    )
+                })}
+                </section>
                 <section className="genres">
-                    <h3>Genres for: </h3>
                     {genres.map(genre => {
                         return (
-                            <div className="movieGenres" >
+                            <div key={genre.id}>
+                                <h3>Genres associated: </h3>
                                 <li>{genre.genres}</li>
                             </div>
                         );
