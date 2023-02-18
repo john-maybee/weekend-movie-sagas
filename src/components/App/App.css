@@ -22,3 +22,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.moviesHeader{
+  border-bottom: 3px double RGB(21, 43, 79, .5);
+  border-top: 3px double RGB(21, 43, 79, .5);
+  /* border-radius: 5px; */
+  padding: 10px;
+  display: inline-block;
+
+}

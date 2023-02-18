@@ -28,7 +28,7 @@ function MovieList() {
         )
     }
     return (
-        <main>
+        <main className="mainPageBody">
             <h1>MovieList</h1>
             <p>(Click a poster to learn more!)</p>
             <section className="movies">

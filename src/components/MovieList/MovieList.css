@@ -6,7 +6,8 @@
 
 .thisMovie{
     flex: 24%;
-    border: 1px solid black;
+    border: 3px double RGB(21, 43, 79, .5);
+    border-radius: 5px;
     padding-bottom: 10px;
 }
 
