@@ -11,7 +11,7 @@ const Details = () => {
     return (
         <div>
             <main className="allMovieDetails">
-                <section classname="movieInformation">
+                <section className="movieInformation">
                 {clickedMovie.map(movie => {
                     return(
                     <div key={movie.id}>
