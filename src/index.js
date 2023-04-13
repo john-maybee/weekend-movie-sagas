@@ -118,3 +118,109 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
+
+// Learned from Chris's video:
+// Within the rootSaga function:
+    // yield takeEvery('ADD_MOVIE', addMovie);
+// Then made a generator function:
+    // function* addMovie(action) {
+    //     try {
+    //         yield axios.post(`/api/movie`, action.payload);
+    //         if (action.history) {
+    //             // Redirect back to the movie list
+    //             action.history.push('/');
+    //         }
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+// The fetchAllMovies generator function looks like:
+    //function* fetchAllMovies() {
+    // // get all movies from the DB
+    //     try {
+    //         const movies = yield axios.get('/api/movie');
+    //         console.log('get all:', movies.data);
+    //         yield put({ type: 'SET_MOVIES', payload: movies.data });
+
+    //     } catch {
+    //         console.log('get all error');
+    //     }
+            
+    // }
+// There is not an extra reducter for the post movie. This is just associated with the movies reducer.
+
+// Below is his AddMovie.jsx component:
+    // import { useDispatch, useSelector } from 'react-redux';
+    // import { useParams } from 'react-router-dom';
+    // import { useEffect, useState } from 'react';
+    // import { useHistory } from 'react-router-dom';
+    // import axios from 'axios';
+
+    // function MovieDetail() {
+    //     const genres = useSelector( store => store.genres );
+    //     const [title, setTitle] = useState('');
+    //     const [description, setDescription] = useState('');
+    //     const [selectedOption, setSelectedOption] = useState('');
+    //     const [poster, setPoster] = useState('');
+    //     const dispatch = useDispatch();
+    //     const history = useHistory();
+    //     const { id } = useParams();
+
+    //     useEffect(() => {
+    //         if (id) { // Return false if id is undefined
+    //             axios.get(`/api/movie/${id}`).then(response => {
+    //                 const movie = response.data;
+    //                 setTitle(movie.title);
+    //                 setDescription(movie.description);
+    //                 setPoster(movie.poster);
+    //             }).catch(error => {
+    //                 console.log(error);
+    //                 alert('Something went wrong!');
+    //             })
+    //         } // else do nothing
+    //     }, [id]);
+
+    //     const submitForm = (e) => {
+    //         e.preventDefault();
+    //         if (id) {
+    //             // EDIT AN EXISTING MOVIE
+    //             dispatch({ type: 'EDIT_MOVIE', payload: { title, description, poster, id }, history });
+    //         } else {
+    //             // ADD A MOVIE
+    //             // Pass history with our dispatch so that the saga can redirect
+    //             dispatch({ type: 'ADD_MOVIE', payload: { title, description, poster }, history });
+    //         }
+
+    //     }
+
+    //     const getTitle = () => {
+    //         if (id) {
+    //             return 'Edit Movie';
+    //         } else {
+    //             return 'Add Movie';
+    //         }
+    //     }
+
+    //     return (
+    //         <div>
+    //             {/* <h1>{getTitle()}</h1> */}
+    //             {id ? <h1>Edit Movie</h1> : <h1>Add Movie</h1> }
+    //             <h3>{id}</h3>
+    //             <form onSubmit={submitForm}>
+    //                 <p>Title: <input value={title} onChange={(e) => setTitle(e.target.value)} /></p>
+    //                 <p>Description: <input value={description} onChange={(e) => setDescription(e.target.value)}  /></p>
+    //                 <p>Poster: <input value={poster} onChange={(e) => setPoster(e.target.value)}  /></p>
+    //                 {/* <select
+    //                     value={selectedOption}
+    //                     onChange={e => setSelectedOption(e.target.value)}>
+    //                     {genres.map(o => (
+    //                         <option key={o.id} value={o.id}>{o.name}</option>
+    //                     ))}
+    //                 </select> */}
+    //                 <input type="submit" />
+    //             </form>
+    //         </div>
+    //     )
+    // }
+
+    // export default MovieDetail;

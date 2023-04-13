@@ -3,5 +3,6 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-image: linear-gradient(to bottom right, #c0805d, #EAD4B0);
+  /* background-image: radial-gradient(circle, rgba(192, 128, 93, 1), rgba(192, 128, 93, 0)); */
   color: RGB(21, 43, 79);
 }

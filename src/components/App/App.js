@@ -24,3 +24,13 @@ function App() {
 
 
 export default App;
+
+// Chris's examples:
+
+// he imported the AddMovie component:
+  // import AddMovie from '../AddMovie/AddMovie';
+
+// Then within the Router in the App.js he added the AddMovie route:
+  // <Route path="/add" exact>
+  //  <AddMovie />
+  // </Route>
