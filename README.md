@@ -1,9 +1,12 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+[Project Instructions](./INSTRUCTIONS.md)
 
-## Description
+## Home Page Image
+![Weekend Movies Saga Main Page](images/moviesagasmain.png)
 
-Your project description goes here. What problem did you solve? How did you solve it?
+## Movie Details Page Example 1 Image
+![Movies Saga Details Example Page](images/moviesagadetailstwo.png)
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Movie Details Page Example 2 Image
+![Movies Saga Details Example Page](images/moviesagadetailsthree.png)
